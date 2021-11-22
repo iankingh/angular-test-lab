@@ -1,3 +1,4 @@
+import { HomeService } from './home.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,9 +12,15 @@ export class HomeComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
+  }
+
+   getData() {
+    this.homeService.getImage().subscribe(data => {
+      console.log(data);
+    });
   }
 
 }

@@ -45,9 +45,8 @@ describe('HomeService', () => {
   });
 
   // jasmine get images
-  it('測試是否創建測試 HomeService jasmine.createSpy', () => {
-    HomeServiceSpy = jasmine.createSpyObj('HomeService', ['getImage']);
-    HomeServiceSpy.getImage;
+  it('測試是否創建測試 HomeService images', () => {
+    service.getImage().subscribe(data => {console.log(data); });
   } );
 
 

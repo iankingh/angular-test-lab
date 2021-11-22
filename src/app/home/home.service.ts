@@ -2,7 +2,8 @@ import { User } from './user';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { of } from 'rxjs/internal/observable/of';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -13,6 +14,8 @@ import { HttpClient } from '@angular/common/http';
 export class HomeService {
 
   constructor(private httpclient: HttpClient) { }
+
+  url = environment.apiUrl;
 
   user: BehaviorSubject<User> = new BehaviorSubject({username: 'Guest'});
 
@@ -25,7 +28,10 @@ export class HomeService {
   }
 
   getImage(){
-    this.httpclient.get('https://img.nextmag.com.tw//campaign/28/640x_61e34bdd3e845ede5a82fd5f48750c77.jpg');
+
+
+
+    return this.httpclient.get(this.url+'.jpg')
   }
 
 }
