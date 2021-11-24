@@ -20,7 +20,7 @@ export class HomeService {
   user: BehaviorSubject<User> = new BehaviorSubject({username: 'Guest'});
 
   getBooleanData() {
-    return true;
+    return false;
   }
 
   getBooleanObservable() {
@@ -28,10 +28,26 @@ export class HomeService {
   }
 
   getImage(){
-
-
-
     return this.httpclient.get(this.url+'.jpg')
+  }
+
+  /**
+   *
+   */
+  getJsonServerData() {
+
+    return this.httpclient.get('http://localhost:3000/posts');
+
+  }
+
+  /**
+   *
+   * @param i
+   * @param j
+   * @returns
+   */
+  add(i: number, j: number) {
+    return i + j;
   }
 
 }

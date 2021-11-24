@@ -23,7 +23,7 @@ describe('HomeService', () => {
   it('測試是否創建測試 HomeService spyOn', () => {
     // spyOn
     spyOn(service, 'getBooleanData').and.returnValue(true);
-    expect(service.getBooleanData()).toBeTruthy();
+    expect(service.getBooleanData()).toBe(true);
   });
 
   // spyOnProperty
@@ -44,13 +44,22 @@ describe('HomeService', () => {
     spy('getBooleanObservable');
   });
 
-  // jasmine get images
+  // jasmine get images unit test 會有 cors error
   it('測試是否創建測試 HomeService images', () => {
-    service.getImage().subscribe(data => {console.log(data); });
-  } );
+    service.getImage().subscribe(data => { console.log(data); });
+  });
 
+  it('測試JSON 資料' ,() =>{
+    service.getJsonServerData().subscribe(data => { console.log("測試JSON 資料 : " + JSON.stringify(data) ); });
+  })
 
-
+  // 使用 spy 取代回傳的資料
+  it('測試JSON use spy', () => {
+    spyOn(service, 'getJsonServerData').and.returnValue(of([{"id": 3,
+    "title": "spy test",
+    "author": "Ian"}]));
+    service.getJsonServerData().subscribe(data => { console.log("測試JSON use spy : " + JSON.stringify(data) ); });
+  });
 
 
 });

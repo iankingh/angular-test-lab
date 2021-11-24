@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
@@ -10,7 +11,8 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
+      declarations: [ HomeComponent ] ,
+      imports: [HttpClientModule],
     })
     .compileComponents();
   })
@@ -28,11 +30,5 @@ describe('HomeComponent', () => {
   it('測試是否有正確的標題', () => {
     expect(component.title).toEqual('Home');
   });
-
-  it('test' ,() => {
-    expect(1+1).toEqual(2);
-  })
-
-
 
 });
