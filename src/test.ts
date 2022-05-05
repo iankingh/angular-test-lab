@@ -21,7 +21,10 @@ getTestBed().initTestEnvironment(
   { teardown: { destroyAfterEach: true }},
 );
 
-// Then we find all the tests.
+
+// Then we find all the tests. 測試全部
 const context = require.context('./', true, /\.spec\.ts$/);
+// Then we find all the tests. 測試單一隻
+// const context = require.context('./', true, /\lightswitch.component.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
